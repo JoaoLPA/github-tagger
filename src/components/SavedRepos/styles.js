@@ -36,17 +36,23 @@ export const Saved = styled.div`
   }
 
   h3 {
+  }
+
+  a:link,
+  a:visited {
     font-size: 13px;
     line-height: 15px;
     font-weight: 700;
     color: ${darkGray};
     margin-bottom: 15px;
+    text-decoration: none;
   }
 `;
 
 export const SavedTags = styled.div`
   background-color: ${lightGray};
   border-radius: 10px;
+  margin-top: 15px;
   padding: 10px 13px;
   display: flex;
   justify-content: space-between;

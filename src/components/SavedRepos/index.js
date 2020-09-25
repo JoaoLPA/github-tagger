@@ -1,5 +1,6 @@
 import React from 'react';
 import { Download } from 'react-feather';
+import { Link } from 'react-router-dom';
 
 import { Container, SavedTitle, Saved, SavedTags } from './styles';
 
@@ -11,9 +12,9 @@ const SavedRepos = ({ savedRepos }) => {
         <Download size={18} />
         Repo's Salvos
       </SavedTitle>
-      {savedRepos.map(repository => (
-        <Saved key={repository.id}>
-          <h3>@{repository.name}</h3>
+      {savedRepos.map(({ id, full_name, name }) => (
+        <Saved key={id}>
+          <Link to={`/repository/${full_name}`}>@{name}</Link>
           <SavedTags>
             <p>produtividade</p>
             <p>typescript</p>
