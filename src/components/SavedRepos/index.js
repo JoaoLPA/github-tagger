@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Download } from 'react-feather';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
+import api from '../../services/api';
 
 import { Container, SavedTitle, Saved, SavedTags } from './styles';
 
@@ -21,7 +22,7 @@ const SavedRepos = () => {
         <Download size={18} />
         Repo's Salvos
       </SavedTitle>
-      {savedRepos.map(({ id, full_name, name }) => (
+      {savedRepos.reverse().map(({ id, full_name, name }) => (
         <Saved key={id}>
           <Link to={`/repository/${full_name}`}>@{name}</Link>
           <SavedTags>

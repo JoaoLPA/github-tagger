@@ -6,7 +6,7 @@ const pulse = keyframes`
   0% {transform: scale(1.2);}
   50% {transform: scale(1.5);}
   100% {transform: scale(1.2);}
-`
+`;
 
 export const SearchTerms = styled.h2`
   color: ${darkGray};
@@ -74,6 +74,7 @@ export const ResultRepos = styled.div`
       transition: background-color 0.2s ease-out;
       transition: border 0.15s ease-in;
       transition: color 0.1s ease-in;
+      z-index: 999;
 
       svg {
         position: relative;
@@ -99,9 +100,9 @@ export const EmptySearch = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-   svg {
+  svg {
     color: ${blue};
     opacity: 0.1;
     animation: ${pulse} 2s linear infinite;
-   }
+  }
 `;

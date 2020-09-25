@@ -8,31 +8,12 @@ export const RepoDetail = styled.div`
   border: 1px solid ${blue};
   width: 620px;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   align-items: center;
   padding: 23px 43px;
   text-decoration: none;
   position: relative;
-
-  img {
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    margin-right: 26px;
-    background-color: #fff;
-  }
-
-  div {
-    strong {
-      font-size: 1.2rem;
-      color: ${blue};
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-    }
-    p {
-      color: ${orange};
-      font-weight: 300;
-    }
-  }
 
   button {
     position: absolute;
@@ -63,14 +44,77 @@ export const RepoDetail = styled.div`
   }
 `;
 
+export const DetailsHeader = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    strong {
+      font-size: 1.125rem;
+      color: ${blue};
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    p {
+      color: ${orange};
+      font-weight: 300;
+      span {
+        & + span {
+          margin-left: 1rem;
+        }
+
+        svg {
+          position: relative;
+          top: 4px;
+          margin-right: 2px;
+        }
+      }
+    }
+  }
+
+  img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-right: 26px;
+    background-color: #fff;
+  }
+`;
+
 export const DetailsNumbers = styled.div`
   display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  p {
+    & + p {
+      margin-left: 1.2rem;
+    }
+  }
 `;
 
 export const DetailDescription = styled.div`
-  flex-grow: 1;
-  display: block;
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  margin-bottom: 28px;
+
+  h2 {
+    color: ${orange};
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 15px;
+    margin-top: 22px;
+  }
+
+  p {
+    color: ${blue};
+    font-size: 14px;
+    line-height: 20px;
+  }
 `;
 
 export const TagContainer = styled.div`
@@ -90,9 +134,6 @@ export const TagContainerHeader = styled.div`
     font-size: 18px;
     line-height: 22px;
     padding-top: 6px;
-  }
-
-  form {
   }
 
   input {
@@ -151,4 +192,15 @@ export const SavedTagsContainer = styled.div`
   text-decoration: none;
   color: white;
   margin-top: 13px;
+  button {
+    padding: 0;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    color: #fff;
+
+    & + button {
+      margin-right: 12px;
+    }
+  }
 `;
