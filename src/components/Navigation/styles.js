@@ -4,7 +4,7 @@ import { orange } from '../../styles/colors';
 
 export const Container = styled.div`
   width: 290px;
-  padding: 8.625rem 31px 0;
+  padding: 5.25rem 31px 0;
 
   a {
     background-color: ${orange};

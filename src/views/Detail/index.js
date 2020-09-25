@@ -3,6 +3,7 @@ import { useRouteMatch } from 'react-router-dom';
 
 import { Column } from '../../styles/column';
 import Navigation from '../../components/Navigation';
+import Details from '../../components/Details';
 import SavedRepos from '../../components/SavedRepos';
 
 const Detail = () => {
@@ -21,9 +22,10 @@ const Detail = () => {
         <SavedRepos />
       </Column>
       <Column>
-        <div>
+        {/* <div>
           <h1>Detalhe: {params.repository}</h1>
-        </div>
+        </div> */}
+        <Details />
       </Column>
     </>
   );
