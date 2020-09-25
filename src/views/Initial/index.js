@@ -32,7 +32,7 @@ const Initial = () => {
 
   function saveRepo(id) {
     const repo = repositories.find(repository => repository.id === id);
-    setSavedRepos(...savedRepos, repo);
+    setSavedRepos([...savedRepos, repo]);
   }
 
   return (
@@ -43,7 +43,7 @@ const Initial = () => {
           setSearch={setSearch}
           search={search}
         />
-        <SavedRepos />
+        <SavedRepos savedRepos={savedRepos} />
       </Column>
       <Column>
         <SearchResults

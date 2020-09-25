@@ -3,7 +3,7 @@ import { Download } from 'react-feather';
 
 import { Container, SavedTitle, Saved, SavedTags } from './styles';
 
-const SavedRepos = () => {
+const SavedRepos = ({ savedRepos }) => {
   return (
     <Container>
       <SavedTitle>
@@ -11,39 +11,19 @@ const SavedRepos = () => {
         <Download size={18} />
         Repo's Salvos
       </SavedTitle>
-      <Saved>
-        <h3>@lynnwallenstein</h3>
-        <SavedTags>
-          <p>produtividade</p>
-          <p>typescript</p>
-          <p>estudar</p>
-          <p>react</p>
-          <p>react</p>
-          <p>react</p>
-        </SavedTags>
-      </Saved>
-      <Saved>
-        <h3>@lynnwallenstein</h3>
-        <SavedTags>
-          <p>produtividade</p>
-          <p>typescript</p>
-          <p>estudar</p>
-          <p>react</p>
-          <p>react</p>
-          <p>react</p>
-        </SavedTags>
-      </Saved>
-      <Saved>
-        <h3>@lynnwallenstein</h3>
-        <SavedTags>
-          <p>produtividade</p>
-          <p>typescript</p>
-          <p>estudar</p>
-          <p>react</p>
-          <p>react</p>
-          <p>react</p>
-        </SavedTags>
-      </Saved>
+      {savedRepos.map(repository => (
+        <Saved>
+          <h3>@{repository.name}</h3>
+          <SavedTags>
+            <p>produtividade</p>
+            <p>typescript</p>
+            <p>estudar</p>
+            <p>react</p>
+            <p>react</p>
+            <p>react</p>
+          </SavedTags>
+        </Saved>
+      ))}
     </Container>
   );
 };

@@ -17,7 +17,6 @@ const SearchResults = ({ repositories, lastSearch, saveRepo }) => {
       {repositories.length !== 0 ? (
         repositories.map(({ id, name, html_url, description, owner }) => (
           <a key={id} href="#">
-            {console.log(id)}
             <img src={owner.avatar_url} alt="Logo do repositório" />
             <div>
               <strong>{name}</strong>
