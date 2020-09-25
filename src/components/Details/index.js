@@ -53,7 +53,6 @@ const Details = () => {
   useEffect(() => {
     api
       .get(`repos/${params.repository}`)
-      // .then(response => setRepository(response.data))
       .then(response => {
         const repo = response.data;
         repo.tags = [];

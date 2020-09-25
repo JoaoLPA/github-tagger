@@ -26,7 +26,7 @@ const SavedRepos = () => {
           <Link to={`/repository/${full_name}`}>@{name}</Link>
           <SavedTags>
             {tags.map(tag => (
-              <p>{tag}</p>
+              <p key={id + Math.round(Math.random() * 1000)}>{tag}</p>
             ))}
           </SavedTags>
         </Saved>
