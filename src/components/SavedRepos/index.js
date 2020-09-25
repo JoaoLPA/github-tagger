@@ -12,7 +12,7 @@ const SavedRepos = ({ savedRepos }) => {
         Repo's Salvos
       </SavedTitle>
       {savedRepos.map(repository => (
-        <Saved>
+        <Saved key={repository.id}>
           <h3>@{repository.name}</h3>
           <SavedTags>
             <p>produtividade</p>

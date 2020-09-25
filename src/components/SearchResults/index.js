@@ -5,8 +5,6 @@ import { SearchTerms, ResultRepos, EmptySearch } from './styles';
 
 const SearchResults = ({ repositories, lastSearch, saveRepo }) => {
   const title = lastSearch.toString().replace(/,/gi, ', ');
-
-  console.log(lastSearch.toString().replace(/,/gi, ', '));
   return (
     <ResultRepos>
       {lastSearch && (

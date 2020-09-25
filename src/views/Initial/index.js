@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 
 import { Column } from '../../styles/column';
@@ -11,7 +11,9 @@ const Initial = () => {
   const [search, setSearch] = useState('');
   const [lastSearch, setLastSearch] = useState('');
   const [repositories, setRepositories] = useState([]);
-  const [savedRepos, setSavedRepos] = useState([]);
+  const [savedRepos, setSavedRepos] = useState(
+    JSON.parse(localStorage.getItem('reposLocalStorage')) || [],
+  );
 
   async function handleSearch(event) {
     event.preventDefault();
@@ -34,6 +36,11 @@ const Initial = () => {
     const repo = repositories.find(repository => repository.id === id);
     setSavedRepos([...savedRepos, repo]);
   }
+
+  useEffect(
+    () => localStorage.setItem('reposLocalStorage', JSON.stringify(savedRepos)),
+    [savedRepos],
+  );
 
   return (
     <>
