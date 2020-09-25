@@ -10,4 +10,4 @@ Após terminar o processo, inicie o app com o comando `yarn start`.
 ### Utilização
 Na página inicial é possível realizar a busca por um ou mais termos:
 
-<img align="left" width="460" src="https://imgur.com/COexRPA">
+[Imgur](https://i.imgur.com/COexRPA.png)
