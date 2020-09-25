@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Download } from 'react-feather';
 import { Link } from 'react-router-dom';
 
 import { Container, SavedTitle, Saved, SavedTags } from './styles';
 
-const SavedRepos = ({ savedRepos }) => {
+const SavedRepos = () => {
+  const [savedRepos] = useState(
+    JSON.parse(localStorage.getItem('reposLocalStorage')) || [],
+  );
+
+  useEffect(
+    () => localStorage.setItem('reposLocalStorage', JSON.stringify(savedRepos)),
+    [savedRepos],
+  );
+
   return (
     <Container>
       <SavedTitle>

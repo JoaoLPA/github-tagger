@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 
+import { Column } from '../../styles/column';
+import Navigation from '../../components/Navigation';
+import SavedRepos from '../../components/SavedRepos';
+
 const Detail = () => {
   const { params } = useRouteMatch();
 
@@ -11,9 +15,17 @@ const Detail = () => {
   function removeTag() {}
 
   return (
-    <div>
-      <h1>Detalhe: {params.repository}</h1>
-    </div>
+    <>
+      <Column>
+        <Navigation />
+        <SavedRepos />
+      </Column>
+      <Column>
+        <div>
+          <h1>Detalhe: {params.repository}</h1>
+        </div>
+      </Column>
+    </>
   );
 };
 

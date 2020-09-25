@@ -50,7 +50,7 @@ const Initial = () => {
           setSearch={setSearch}
           search={search}
         />
-        <SavedRepos savedRepos={savedRepos} />
+        <SavedRepos />
       </Column>
       <Column>
         <SearchResults
