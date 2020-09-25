@@ -42,7 +42,9 @@ const Details = () => {
   }
 
   function removeTag(value) {
-    setSavedTags(savedTags.filter(tag => tag !== value));
+    const updatedTags = savedTags.filter(tag => tag !== value);
+    repository.tags = updatedTags;
+    setSavedTags(updatedTags);
   }
 
   function removeRepo() {
