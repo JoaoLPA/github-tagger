@@ -55,7 +55,6 @@ export const SavedTags = styled.div`
   margin-top: 15px;
   padding: 10px 13px;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   width: 184px;
   p {
@@ -64,5 +63,9 @@ export const SavedTags = styled.div`
     font-weight: 700;
     font-size: 12px;
     line-height: 16px;
+
+    & + p {
+      margin-left: 12px;
+    }
   }
 `;

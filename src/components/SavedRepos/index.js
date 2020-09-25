@@ -21,16 +21,13 @@ const SavedRepos = () => {
         <Download size={18} />
         Repo's Salvos
       </SavedTitle>
-      {savedRepos.reverse().map(({ id, full_name, name }) => (
+      {savedRepos.reverse().map(({ id, full_name, name, tags }) => (
         <Saved key={id}>
           <Link to={`/repository/${full_name}`}>@{name}</Link>
           <SavedTags>
-            <p>produtividade</p>
-            <p>typescript</p>
-            <p>estudar</p>
-            <p>react</p>
-            <p>react</p>
-            <p>react</p>
+            {tags.map(tag => (
+              <p>{tag}</p>
+            ))}
           </SavedTags>
         </Saved>
       ))}
