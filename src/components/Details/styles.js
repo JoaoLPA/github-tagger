@@ -200,7 +200,31 @@ export const SavedTagsContainer = styled.div`
     color: #fff;
 
     & + button {
-      margin-right: 12px;
+      margin-left: 12px;
     }
+  }
+`;
+
+export const DeleteButton = styled.button`
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  outline: none;
+  border: 1px solid ${blue};
+  color: ${blue};
+  position: absolute;
+  top: 8px;
+  right: 0;
+  transition: background-color 0.2s ease-in;
+
+  svg {
+    position: relative;
+    top: 2px;
+  }
+
+  &:hover {
+    background-color: ${blue};
   }
 `;

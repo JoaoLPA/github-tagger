@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Download, Star, GitBranch, AlertCircle, Plus } from 'react-feather';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Download, Star, GitBranch, AlertCircle, Plus, X } from 'react-feather';
+import { useRouteMatch } from 'react-router-dom';
 import api from '../../services/api';
 
 import {
@@ -11,6 +11,7 @@ import {
   TagContainer,
   TagContainerHeader,
   SavedTagsContainer,
+  DeleteButton,
 } from './styles';
 
 const Details = () => {
@@ -26,6 +27,7 @@ const Details = () => {
 
   function saveRepo() {
     setIsSaved(true);
+    repository.tags = savedTags;
     setSavedRepos([...savedRepos, repository]);
   }
 
@@ -33,15 +35,30 @@ const Details = () => {
     event.preventDefault();
     setTags('');
     const tagArray = tags.split(' ');
-    setSavedTags([...savedTags, ...tagArray]);
+    const updatedRepository = repository;
+    updatedRepository.tags = tagArray;
+    setRepository(updatedRepository);
+    setSavedTags([...tagArray]);
   }
 
-  function removeTag() {}
+  function removeTag(value) {
+    setSavedTags(savedTags.filter(tag => tag !== value));
+  }
+
+  function removeRepo() {
+    setIsSaved(false);
+    setSavedRepos(savedRepos.filter(repo => repo.id !== repository.id));
+  }
 
   useEffect(() => {
     api
       .get(`repos/${params.repository}`)
-      .then(response => setRepository(response.data))
+      // .then(response => setRepository(response.data))
+      .then(response => {
+        const repo = response.data;
+        repo.tags = [];
+        setRepository(repo);
+      })
       .catch(error => {
         console.log(error);
       });
@@ -49,17 +66,21 @@ const Details = () => {
 
   useEffect(
     () => localStorage.setItem('reposLocalStorage', JSON.stringify(savedRepos)),
-    [savedRepos],
+    [savedRepos, savedTags],
   );
 
   useEffect(() => {
-    if (repository !== null) {
-      setIsSaved(true);
-    }
-  }, [repository]);
+    setIsSaved(savedRepos.some(repo => repo.full_name === params.repository));
+  }, [savedRepos]);
+
   return (
     <>
       <RepoDetail>
+        {isSaved && (
+          <DeleteButton onClick={() => removeRepo()}>
+            <X size={18} />
+          </DeleteButton>
+        )}
         <DetailsHeader>
           <img src={repository?.owner.avatar_url} alt="Logo do repositório" />
           <div>
@@ -109,8 +130,14 @@ const Details = () => {
             </form>
           </TagContainerHeader>
           <SavedTagsContainer>
-            {savedTags.map(tag => (
-              <button>tag</button>
+            {repository?.tags.map(tag => (
+              <button
+                key={tag}
+                value={tag}
+                onClick={({ target }) => removeTag(target.value)}
+              >
+                {tag}
+              </button>
             ))}
           </SavedTagsContainer>
         </TagContainer>

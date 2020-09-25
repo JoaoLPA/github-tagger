@@ -11,9 +11,6 @@ const Initial = () => {
   const [search, setSearch] = useState('');
   const [lastSearch, setLastSearch] = useState('');
   const [repositories, setRepositories] = useState([]);
-  const [savedRepos, setSavedRepos] = useState(
-    JSON.parse(localStorage.getItem('reposLocalStorage')) || [],
-  );
 
   async function handleSearch(event) {
     event.preventDefault();
@@ -32,16 +29,6 @@ const Initial = () => {
     setRepositories([...repositories, ...repos]);
   }
 
-  function saveRepo(id) {
-    const repo = repositories.find(repository => repository.id === id);
-    setSavedRepos([...savedRepos, repo]);
-  }
-
-  useEffect(
-    () => localStorage.setItem('reposLocalStorage', JSON.stringify(savedRepos)),
-    [savedRepos],
-  );
-
   return (
     <>
       <Column>
@@ -53,11 +40,7 @@ const Initial = () => {
         <SavedRepos />
       </Column>
       <Column>
-        <SearchResults
-          repositories={repositories}
-          lastSearch={lastSearch}
-          saveRepo={saveRepo}
-        />
+        <SearchResults repositories={repositories} lastSearch={lastSearch} />
       </Column>
     </>
   );

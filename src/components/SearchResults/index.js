@@ -1,10 +1,10 @@
 import React from 'react';
-import { Download, GitHub } from 'react-feather';
+import { GitHub } from 'react-feather';
 import { Link } from 'react-router-dom';
 
 import { SearchTerms, ResultRepos, EmptySearch } from './styles';
 
-const SearchResults = ({ repositories, lastSearch, saveRepo }) => {
+const SearchResults = ({ repositories, lastSearch }) => {
   const title = lastSearch.toString().replace(/,/gi, ', ');
   return (
     <ResultRepos>
@@ -14,20 +14,15 @@ const SearchResults = ({ repositories, lastSearch, saveRepo }) => {
         </SearchTerms>
       )}
       {repositories.length !== 0 ? (
-        repositories.map(
-          ({ id, name, html_url, description, owner, full_name }) => (
-            <Link key={id} to={`/repository/${full_name}`}>
-              <img src={owner.avatar_url} alt="Logo do repositório" />
-              <div>
-                <strong>{name}</strong>
-                <p>{description}</p>
-              </div>
-              <button onClick={() => saveRepo(id)}>
-                <Download size={11} />
-              </button>
-            </Link>
-          ),
-        )
+        repositories.map(({ id, name, description, owner, full_name }) => (
+          <Link key={id} to={`/repository/${full_name}`}>
+            <img src={owner.avatar_url} alt="Logo do repositório" />
+            <div>
+              <strong>{name}</strong>
+              <p>{description}</p>
+            </div>
+          </Link>
+        ))
       ) : (
         <EmptySearch>
           <GitHub size={240} />

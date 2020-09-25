@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Download } from 'react-feather';
-import { Link, useRouteMatch } from 'react-router-dom';
-import api from '../../services/api';
+import { Link } from 'react-router-dom';
 
 import { Container, SavedTitle, Saved, SavedTags } from './styles';
 
